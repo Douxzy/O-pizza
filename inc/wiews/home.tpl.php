@@ -13,30 +13,21 @@
     <p>Voici la liste des meilleures pizzas, commandez celle que vous voulez</p>
 
     <div class="card-deck">
-      <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="inc/image/pîzza.jpeg" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Pizza napolitaine</h5>
-        <p class="card-text">champignon, roquefort, roquette</p>
-        <p class="card-text">8 €</p>
-      </div>
-      </div>
-
-      <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="inc/image/pîzza.jpeg" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Pizza sicilienne</h5>
-        <p class="card-text">buratta, truffe</p>
-        <p class="card-text">15 €</p>
-      </div>
-      </div>
-
-      <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="inc/image/pîzza.jpeg" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Pizza New York style</h5>
-        <p class="card-text">cheddar</p>
-        <p class="card-text">10 €</p>
+    <?php foreach ($pizzaList as $pizza) : 
+         $ingredientList = $pizza->getIngredients();
+        ?>
+       
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="./inc/image/pizza.jpeg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Pizza <?= $pizza->getType() ?></h5>
+            <?php foreach ($ingredientList as $ingredient) : ?>
+                <span class="badge badge-info"><?= $ingredient ?></span>
+            <?php endforeach ?>
+            <p class="card-text"><?= $pizza->getPrice() ?> €</p>
+          </div>
+        </div>
+      <?php endforeach ?>
       </div>
       </div>
     </div>
